@@ -3,6 +3,7 @@
 # Dependencies
 node_modules/**/*
 .expo/**/*
+/functions
 
 # Misc
 npm-debug.log
