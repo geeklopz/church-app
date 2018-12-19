@@ -9,8 +9,15 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+
 import { MonoText } from '../components/StyledText';
-//import PDFReader from 'rn-pdf-reader-js ';
+import {
+  Card,
+  CardImage,
+  CardTitle,
+  CardContent,
+  CardAction
+} from 'react-native-card-view';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -19,13 +26,140 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      
- <View>
-        <Text/>
- </View>
+      <ScrollView>
+      <View style={styles.container}>
+        <Card>
+        <CardTitle>
+          <Text style={styles.title}>Announcement</Text>
+        </CardTitle>
+        <CardContent>
+          <Text>Content</Text>
+        </CardContent>
+        
+      </Card>
+
+        <Card>
+        <CardTitle>
+          <Text style={styles.title}>Announcement</Text>
+        </CardTitle>
+        <CardContent>
+          <Text>Content</Text>
+        </CardContent>
+        
+      </Card>
+
+<Card>
+        <CardTitle>
+          <Text style={styles.title}>Announcement</Text>
+        </CardTitle>
+        <CardContent>
+          <Text>Content</Text>
+        </CardContent>
+        
+      </Card>
+
+<Card>
+        <CardTitle>
+          <Text style={styles.title}>Announcement</Text>
+        </CardTitle>
+        <CardContent>
+          <Text>Content</Text>
+        </CardContent>
+        
+      </Card>
+
+        <Card>
+        <CardTitle>
+          <Text style={styles.title}>Announcement</Text>
+        </CardTitle>
+        <CardContent>
+          <Text>Content</Text>
+        </CardContent>
+        
+      </Card>
+
+<Card>
+        <CardTitle>
+          <Text style={styles.title}>Announcement</Text>
+        </CardTitle>
+        <CardContent>
+          <Text>Content</Text>
+        </CardContent>
+        
+      </Card>
+
+
+
+
+      <Card>
+        <CardTitle>
+          <Text style={styles.title}>Announcement</Text>
+        </CardTitle>
+        <CardContent>
+          <Text>Content</Text>
+        </CardContent>
+        
+      </Card>
+
+        <Card>
+        <CardTitle>
+          <Text style={styles.title}>Announcement</Text>
+        </CardTitle>
+        <CardContent>
+          <Text>Content</Text>
+        </CardContent>
+        
+      </Card>
+
+<Card>
+        <CardTitle>
+          <Text style={styles.title}>Announcement</Text>
+        </CardTitle>
+        <CardContent>
+          <Text>Content</Text>
+        </CardContent>
+        
+      </Card>
+
+
+
+      <Card>
+        <CardTitle>
+          <Text style={styles.title}>Announcement</Text>
+        </CardTitle>
+        <CardContent>
+          <Text>Content</Text>
+        </CardContent>
+        
+      </Card>
+
+        <Card>
+        <CardTitle>
+          <Text style={styles.title}>Announcement</Text>
+        </CardTitle>
+        <CardContent>
+          <Text>Content</Text>
+        </CardContent>
+        
+      </Card>
+
+<Card>
+        <CardTitle>
+          <Text style={styles.title}>Announcement</Text>
+        </CardTitle>
+        <CardContent>
+          <Text>Content</Text>
+        </CardContent>
+        
+      </Card>
+      </View>
+      </ScrollView>
 
     );
+    
   }
+ 
+
 
   _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
@@ -62,6 +196,15 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  
+  
+    title: {
+      fontSize: 38,
+      backgroundColor: 'transparent'
+    },
+    
+  
+  
   container: {
     flex: 1,
     backgroundColor: '#fff',

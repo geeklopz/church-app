@@ -6,7 +6,8 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-
+import AnnouncementScreen from '../screens/AnnouncementScreen';
+import CalendarScreen from '../screens/CalendarScreen';
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
@@ -25,12 +26,12 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const CalendarStack = createStackNavigator({
+  Links: CalendarScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+CalendarStack.navigationOptions = {
+  tabBarLabel: 'Calendar',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -39,12 +40,12 @@ LinksStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const AnnouncementStack = createStackNavigator({
+  Settings: AnnouncementScreen,
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+AnnouncementStack.navigationOptions = {
+  tabBarLabel: 'Announcments',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -55,6 +56,6 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  CalendarStack,
+  AnnouncementStack,
 });
