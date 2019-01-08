@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  WebView
 } from 'react-native';
 import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
@@ -19,11 +20,11 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      
- <View>
-        <Text/>
- </View>
-
+ <WebView
+ source={{uri: 'https://www.graceunconditional.com/wp-content/uploads/2019/01/Bulletin-1-5-18.pdf'}}
+ style={{marginTop: 20}}
+/>
+   
     );
   }
 

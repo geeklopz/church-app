@@ -4,10 +4,11 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import AboutUsScreen from '../screens/AboutUsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import AnnouncementScreen from '../screens/AnnouncementScreen';
 import CalendarScreen from '../screens/CalendarScreen';
+
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
@@ -54,8 +55,25 @@ AnnouncementStack.navigationOptions = {
   ),
 };
 
+const AboutUsStack = createStackNavigator({
+  AboutUs: AboutUsScreen,
+});
+
+AboutUsStack.navigationOptions = {
+  tabBarLabel: 'About Us',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
+    />
+  ),
+};
+
+
+
 export default createBottomTabNavigator({
   HomeStack,
   CalendarStack,
   AnnouncementStack,
+  AboutUsStack
 });
