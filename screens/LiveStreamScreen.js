@@ -22,7 +22,7 @@ export default class LiveStreamScreen extends React.Component {
     return (
  <WebView
  source={{uri:'https://www.youtube.com/embed/TnkWkRXgk1w'}}
- //source={{uri: 'https://www.graceunconditional.com/wp-content/uploads/2019/01/Bulletin-1-5-18.pdf'}}
+ 
  style={{marginTop: 50}}
 />
    
