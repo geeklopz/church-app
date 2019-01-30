@@ -4,6 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
+import LiveStreamScreen from '../screens/LiveStreamScreen';
 import AboutUsScreen from '../screens/AboutUsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import AnnouncementScreen from '../screens/AnnouncementScreen';
@@ -20,7 +21,7 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
+          ? `ios-paper${focused ? '' : '-outline'}`
           : 'md-information-circle'
       }
     />
@@ -36,10 +37,25 @@ CalendarStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+      name={Platform.OS === 'ios' ? `ios-calendar${focused ? '' : '-outline'}` : 'md-link'}
     />
   ),
 };
+
+const LiveStreamStack = createStackNavigator({
+  Links: LiveStreamScreen,
+});
+
+LiveStreamStack.navigationOptions = {
+  tabBarLabel: 'Live Stream',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-videocam${focused ? '' : '-outline'}` : 'md-link'}
+    />
+  ),
+};
+
 
 const AnnouncementStack = createStackNavigator({
   Settings: AnnouncementScreen,
@@ -50,7 +66,7 @@ AnnouncementStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
+      name={Platform.OS === 'ios' ? `ios-albums${focused ? '' : '-outline'}` : 'md-options'}
     />
   ),
 };
@@ -64,7 +80,7 @@ AboutUsStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
+      name={Platform.OS === 'ios' ? `ios-information-circle${focused ? '' : '-outline'}` : 'md-options'}
     />
   ),
 };
@@ -73,6 +89,7 @@ AboutUsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
+  LiveStreamStack,
   CalendarStack,
   AnnouncementStack,
   AboutUsStack

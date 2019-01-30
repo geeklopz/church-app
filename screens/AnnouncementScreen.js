@@ -30,60 +30,60 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <Card>
         <CardTitle>
-          <Text style={styles.title}>Announcement</Text>
+          <Text style={styles.title}>PotLuck</Text>
         </CardTitle>
         <CardContent>
-          <Text>Content</Text>
+          <Text>This Sabbath Potluck will be in the Fellowship Hall</Text>
         </CardContent>
         
       </Card>
 
         <Card>
         <CardTitle>
-          <Text style={styles.title}>Announcement</Text>
+          <Text style={styles.title}>Communion</Text>
         </CardTitle>
         <CardContent>
-          <Text>Content</Text>
+          <Text>Communion is on the 12th Sabbath of the Quarter</Text>
         </CardContent>
         
       </Card>
 
 <Card>
         <CardTitle>
-          <Text style={styles.title}>Announcement</Text>
+          <Text style={styles.title}>Fitness</Text>
         </CardTitle>
         <CardContent>
-          <Text>Content</Text>
+          <Text>Stay Healthy with Weekly Workout Group</Text>
         </CardContent>
         
       </Card>
 
 <Card>
         <CardTitle>
-          <Text style={styles.title}>Announcement</Text>
+          <Text style={styles.title}>Bible Study</Text>
         </CardTitle>
         <CardContent>
-          <Text>Content</Text>
+          <Text>New Bible Study on Wednesday nights </Text>
         </CardContent>
         
       </Card>
 
         <Card>
         <CardTitle>
-          <Text style={styles.title}>Announcement</Text>
+          <Text style={styles.title}>Volunteer</Text>
         </CardTitle>
         <CardContent>
-          <Text>Content</Text>
+          <Text>Help out at the Hospital.</Text>
         </CardContent>
         
       </Card>
 
 <Card>
         <CardTitle>
-          <Text style={styles.title}>Announcement</Text>
+          <Text style={styles.title}>Welcome Lunch</Text>
         </CardTitle>
         <CardContent>
-          <Text>Content</Text>
+          <Text>Special lunch for new members to get to know eachother</Text>
         </CardContent>
         
       </Card>
@@ -93,10 +93,10 @@ export default class HomeScreen extends React.Component {
 
       <Card>
         <CardTitle>
-          <Text style={styles.title}>Announcement</Text>
+          <Text style={styles.title}>Baby Sitter Wanted</Text>
         </CardTitle>
         <CardContent>
-          <Text>Content</Text>
+          <Text>Call 555-555-5555 if you are interested on Baby Sitting on every other Sunday</Text>
         </CardContent>
         
       </Card>
@@ -208,6 +208,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    paddingTop: 50,
   },
   developmentModeText: {
     marginBottom: 20,

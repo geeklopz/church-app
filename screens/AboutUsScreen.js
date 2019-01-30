@@ -43,6 +43,7 @@ export default class AboutUsScreen extends Component {
 					<Text style={styles.contactTxt}> Contact Information: </Text>
 					<Text style={styles.contactTxt}> Email: vallejo@graceunconditional.com</Text>
 					<Text style={styles.contactTxt}> General Phone #: 818-246-2476 </Text>
+					<Text style={styles.contactTxt}> Website: https://www.graceunconditional.com/</Text>
                     <Text style={styles.contactTxt}> Address: 300 Vallejo Dr Glendale CA </Text>
 					
 				</View>

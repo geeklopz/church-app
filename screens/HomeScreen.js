@@ -22,7 +22,7 @@ export default class HomeScreen extends React.Component {
     return (
  <WebView
  source={{uri: 'https://www.graceunconditional.com/wp-content/uploads/2019/01/Bulletin-1-5-18.pdf'}}
- style={{marginTop: 20}}
+ style={{marginTop: 50}}
 />
    
     );
@@ -61,9 +61,12 @@ export default class HomeScreen extends React.Component {
     );
   };
 }
-
+function changeScreenOrientation() {
+  Expo.ScreenOrientation.allowAsync(Expo.ScreenOrientation.Orientation.LANDSCAPE);
+}
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 50,
     flex: 1,
     backgroundColor: '#fff',
   },
