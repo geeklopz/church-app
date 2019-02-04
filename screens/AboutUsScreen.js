@@ -21,7 +21,7 @@ export default class AboutUsScreen extends Component {
     ];
 
     renderMarkers() {
-		return this.Location.map((space) => <Marker coordinate={space.coordinate} title={space.title} />);
+		return this.Location.map((space) => <Marker key={space.title} coordinate={space.coordinate} title={space.title} />);
 	}
 
 
