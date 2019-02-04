@@ -56,11 +56,11 @@ export default class HomeScreen extends React.Component {
         );
       });
       return (
-        <ScrollView>{dataItems}</ScrollView>
-        /*<WebView
-          source={{ uri: this.state.data[0].bulletin }}
+        /*<ScrollView>{dataItems}</ScrollView>*/ // uncomment this & comment out WebView to display all data
+        <WebView
+          source={{ uri: data[0].bulletin }}
           style={{ marginTop: 50 }}
-        />*/
+        />
       );
     } else {
       return (
