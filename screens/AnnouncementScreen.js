@@ -24,141 +24,55 @@ export default class HomeScreen extends React.Component {
     header: null,
   };
 
-  render() {
-    return (
-      <ScrollView>
-      <View style={styles.container}>
-        <Card>
-        <CardTitle>
-          <Text style={styles.title}>PotLuck</Text>
-        </CardTitle>
-        <CardContent>
-          <Text>This Sabbath Potluck will be in the Fellowship Hall</Text>
-        </CardContent>
-        
-      </Card>
-
-        <Card>
-        <CardTitle>
-          <Text style={styles.title}>Communion</Text>
-        </CardTitle>
-        <CardContent>
-          <Text>Communion is on the 12th Sabbath of the Quarter</Text>
-        </CardContent>
-        
-      </Card>
-
-<Card>
-        <CardTitle>
-          <Text style={styles.title}>Fitness</Text>
-        </CardTitle>
-        <CardContent>
-          <Text>Stay Healthy with Weekly Workout Group</Text>
-        </CardContent>
-        
-      </Card>
-
-<Card>
-        <CardTitle>
-          <Text style={styles.title}>Bible Study</Text>
-        </CardTitle>
-        <CardContent>
-          <Text>New Bible Study on Wednesday nights </Text>
-        </CardContent>
-        
-      </Card>
-
-        <Card>
-        <CardTitle>
-          <Text style={styles.title}>Volunteer</Text>
-        </CardTitle>
-        <CardContent>
-          <Text>Help out at the Hospital.</Text>
-        </CardContent>
-        
-      </Card>
-
-<Card>
-        <CardTitle>
-          <Text style={styles.title}>Welcome Lunch</Text>
-        </CardTitle>
-        <CardContent>
-          <Text>Special lunch for new members to get to know eachother</Text>
-        </CardContent>
-        
-      </Card>
-
-
-
-
-      <Card>
-        <CardTitle>
-          <Text style={styles.title}>Baby Sitter Wanted</Text>
-        </CardTitle>
-        <CardContent>
-          <Text>Call 555-555-5555 if you are interested on Baby Sitting on every other Sunday</Text>
-        </CardContent>
-        
-      </Card>
-
-        <Card>
-        <CardTitle>
-          <Text style={styles.title}>Announcement</Text>
-        </CardTitle>
-        <CardContent>
-          <Text>Content</Text>
-        </CardContent>
-        
-      </Card>
-
-<Card>
-        <CardTitle>
-          <Text style={styles.title}>Announcement</Text>
-        </CardTitle>
-        <CardContent>
-          <Text>Content</Text>
-        </CardContent>
-        
-      </Card>
-
-
-
-      <Card>
-        <CardTitle>
-          <Text style={styles.title}>Announcement</Text>
-        </CardTitle>
-        <CardContent>
-          <Text>Content</Text>
-        </CardContent>
-        
-      </Card>
-
-        <Card>
-        <CardTitle>
-          <Text style={styles.title}>Announcement</Text>
-        </CardTitle>
-        <CardContent>
-          <Text>Content</Text>
-        </CardContent>
-        
-      </Card>
-
-<Card>
-        <CardTitle>
-          <Text style={styles.title}>Announcement</Text>
-        </CardTitle>
-        <CardContent>
-          <Text>Content</Text>
-        </CardContent>
-        
-      </Card>
-      </View>
-      </ScrollView>
-
-    );
-    
+  state = {
+    announcements: []
   }
- 
+
+  componentDidMount() {
+    fetch('https://sheets.googleapis.com/v4/spreadsheets/1Ee3T6NB3PLzueMl7yEROwcgmjSXpKdTBmb42F0TTYZ4/values:batchGet?ranges=Announcements&majorDimension=ROWS&key=AIzaSyD5pPk5iDxftXFtCTWtW8cBKDnv3QW5KQ0')
+      .then(response => response.json()).then(data => {
+        let batchRowValues = data.valueRanges[0].values;
+
+        const rows = [];
+        for (let i = 1; i < batchRowValues.length; i++) {
+          let rowObject = {};
+          for (let j = 0; j < batchRowValues[i].length; j++) {
+            rowObject[batchRowValues[0][j]] = batchRowValues[i][j];
+          }
+          rows.push(rowObject);
+        }
+
+        this.setState({ announcements: rows });
+      });
+  }
+
+  render() {
+    const { announcements } = this.state;
+    if (announcements.length != 0) {
+      const announcementCards = announcements.map(({ date, title, description }) => {
+        return (
+          <Card key={date+title+description} style={styles.card}>
+            <CardTitle>
+              <Text style={styles.title}>{title} - {date}</Text>
+            </CardTitle>
+            <CardContent>
+              <Text>{description}</Text>
+            </CardContent>
+          </Card>
+        );
+      });
+      return (
+        <ScrollView>
+          <View style={styles.container}>
+            {announcementCards}
+          </View>
+        </ScrollView>
+      );
+    } else {
+      return (<Text>Loading...</Text>);
+    }
+  }
+
 
 
   _maybeRenderDevelopmentModeWarning() {
@@ -196,14 +110,14 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  
-  
-    title: {
-      fontSize: 38,
-      backgroundColor: 'transparent'
-    },
-    
-  
+
+
+  title: {
+    fontSize: 32,
+    backgroundColor: 'transparent'
+  },
+
+
   
   container: {
     flex: 1,
