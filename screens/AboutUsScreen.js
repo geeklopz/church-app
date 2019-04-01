@@ -82,19 +82,19 @@ const args = {
 };
 const styles = StyleSheet.create({
 	root: {
-		backgroundColor: 'white',
+		backgroundColor: '#F0F8FF',
 		flex: 1,
 		alignItems: 'center'
 	},
 
 	contactInformation: {
 		width: window.width,
-		backgroundColor: '#3d4756',
+		backgroundColor: '#47676d',
 		padding: 25,
 		paddingLeft: 50
 	},
 	contactTxt: {
-		color: '#fff',
+		color: 'white',
 		fontWeight: 'bold'
 	},
 

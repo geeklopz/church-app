@@ -9,6 +9,7 @@ import AboutUsScreen from '../screens/AboutUsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import AnnouncementScreen from '../screens/AnnouncementScreen';
 import CalendarScreen from '../screens/CalendarScreen';
+import GiveScreen from '../screens/GiveScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -33,11 +34,11 @@ const CalendarStack = createStackNavigator({
 });
 
 CalendarStack.navigationOptions = {
-  tabBarLabel: 'Calendar',
+  tabBarLabel: 'Bulletin',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-calendar${focused ? '' : '-outline'}` : 'md-link'}
+      name={Platform.OS === 'ios' ? `ios-paper${focused ? '' : '-outline'}` : 'md-link'}
     />
   ),
 };
@@ -52,6 +53,20 @@ LiveStreamStack.navigationOptions = {
     <TabBarIcon
       focused={focused}
       name={Platform.OS === 'ios' ? `ios-videocam${focused ? '' : '-outline'}` : 'md-link'}
+    />
+  ),
+};
+
+const GiveStack = createStackNavigator({
+  Links: GiveScreen,
+});
+
+GiveStack.navigationOptions = {
+  tabBarLabel: 'Give',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-card${focused ? '' : '-outline'}` : 'md-link'}
     />
   ),
 };
@@ -92,5 +107,6 @@ export default createBottomTabNavigator({
   LiveStreamStack,
   CalendarStack,
   AnnouncementStack,
+  GiveStack,
   AboutUsStack
 });

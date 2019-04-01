@@ -20,9 +20,14 @@ import {
 } from 'react-native-card-view';
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-  };
+  static navigationOptions = ({ navigation }) => ({
+		title: 'Announcements',
+		tabBarLabel: 'Announcements',
+		headerTitleStyle: {
+			textAlign: 'center',
+			alignSelf: 'center'
+		}
+	});
 
   state = {
     announcements: []
@@ -51,18 +56,18 @@ export default class HomeScreen extends React.Component {
     if (announcements.length != 0) {
       const announcementCards = announcements.map(({ date, title, description }) => {
         return (
-          <Card key={date+title+description} style={styles.card}>
-            <CardTitle>
+          <View key={date + title + description} style={styles.card}>
+            <CardTitle style={styles.cardTitle}>
               <Text style={styles.title}>{title} - {date}</Text>
             </CardTitle>
-            <CardContent>
+            <CardContent style={styles.cardContent}>
               <Text>{description}</Text>
             </CardContent>
-          </Card>
+          </View>
         );
       });
       return (
-        <ScrollView>
+      <ScrollView >
           <View style={styles.container}>
             {announcementCards}
           </View>
@@ -111,6 +116,18 @@ export default class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
 
+  card: {
+    backgroundColor: 'white',
+    borderRadius: '10px',
+    shadowOpacity: .3,
+    margin: 8,
+    shadowRadius: 4,
+    shadowColor: 'black',
+    shadowOffset: { height: 2, width: 2 },
+
+
+
+  },
 
   title: {
     fontSize: 32,
@@ -118,10 +135,10 @@ const styles = StyleSheet.create({
   },
 
 
-  
+
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F0F8FF',
     paddingTop: 50,
   },
   developmentModeText: {

@@ -14,16 +14,20 @@ import { MonoText } from '../components/StyledText';
 //import PDFReader from 'rn-pdf-reader-js ';
 
 export default class LiveStreamScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-  };
+  static navigationOptions = ({ navigation }) => ({
+		title: 'Livestream',
+		tabBarLabel: 'Livestream',
+		headerTitleStyle: {
+			textAlign: 'center',
+			alignSelf: 'center'
+		}
+	});
 
   render() {
     return (
  <WebView
- source={{uri:'https://www.youtube.com/embed/TnkWkRXgk1w'}}
+ source={{uri:'https://player.twitch.tv/?channel=rush'}}
  
- style={{marginTop: 50}}
 />
    
     );

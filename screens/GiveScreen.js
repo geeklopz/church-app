@@ -13,10 +13,10 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 //import PDFReader from 'rn-pdf-reader-js ';
 
-export default class CalendarScreen extends React.Component {
+export default class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-		title: 'Bulletin',
-		tabBarLabel: 'Bulletin',
+		title: 'Vallejo Drive Seventh Day Adventist Church',
+		tabBarLabel: 'Give',
 		headerTitleStyle: {
 			textAlign: 'center',
 			alignSelf: 'center'
@@ -27,51 +27,17 @@ export default class CalendarScreen extends React.Component {
     data: []
   }
 
-  componentDidMount() {
-    fetch('https://sheets.googleapis.com/v4/spreadsheets/1Ee3T6NB3PLzueMl7yEROwcgmjSXpKdTBmb42F0TTYZ4/values:batchGet?ranges=Output&majorDimension=ROWS&key=AIzaSyD5pPk5iDxftXFtCTWtW8cBKDnv3QW5KQ0').then(response => response.json()).then(data => {
-      let batchRowValues = data.valueRanges[0].values;
-
-      const rows = [];
-      for (let i = 1; i < batchRowValues.length; i++) {
-        let rowObject = {};
-        for (let j = 0; j < batchRowValues[i].length; j++) {
-          rowObject[batchRowValues[0][j]] = batchRowValues[i][j];
-        }
-        rows.push(rowObject);
-      }
-
-      this.setState({ data: rows });
-      //console.log(this.state.data);
-    });
-  }
+ 
 
   render() {
-    const { data } = this.state;
-    if (data.length != 0) {
-      let i = 0;
-      dataItems = data.map(({ date, preacher, bulletin, video }) => {
-        return (
-          <View key={date+i++}>
-            <Text>{date}</Text>
-            <Text>{preacher}</Text>
-            <Text>Bulletin: {bulletin}</Text>
-            <Text>Video: {video}</Text>
-            <Text></Text>
-          </View>
-        );
-      });
-      return (
-        /*<ScrollView>{dataItems}</ScrollView>*/ // uncomment this & comment out WebView to display all data
-        <WebView
-          source={{ uri: data[0].bulletin }}
-          style={{ marginTop: 50 }}
-        />
-      );
-    } else {
-      return (
-        <Text>Loading...</Text>
-      );
-    }
+    return (
+ <WebView
+ source={{uri:'https://adventistgiving.org/#/org/ANPPS6/envelope/start'}}
+ 
+
+/>
+   
+    );
   }
 
   _maybeRenderDevelopmentModeWarning() {
@@ -112,7 +78,7 @@ function changeScreenOrientation() {
 }
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 0,
+    paddingTop: 50,
     flex: 1,
     backgroundColor: '#fff',
   },
@@ -123,7 +89,9 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     textAlign: 'center',
   },
-  
+  contentContainer: {
+    paddingTop: 30,
+  },
   welcomeContainer: {
     alignItems: 'center',
     marginTop: 10,
