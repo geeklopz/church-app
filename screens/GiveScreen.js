@@ -1,3 +1,4 @@
+const WEBVIEW_REF = 'WEBVIEW_REF';
 import React from 'react';
 import {
   Image,
@@ -24,19 +25,31 @@ export default class HomeScreen extends React.Component {
 	});
 
   state = {
-    data: []
+    data: [],
+    canGoBack: false
   }
 
  
-
+  //<WebView source={{uri:'https://adventistgiving.org/#/org/ANPPS6/envelope/start'}}/>
   render() {
     return (
- <WebView
- source={{uri:'https://adventistgiving.org/#/org/ANPPS6/envelope/start'}}
- 
-
-/>
-   
+      <View style={styles.container}>
+        <View style={styles.topbar}>
+          <TouchableOpacity
+            disabled={!this.state.canGoBack}
+            onPress={this.onBack.bind(this)}
+          >
+            <Text style={(this.state.canGoBack ? styles.topbarText : styles.topbarTextDisabled)}>Go back</Text>
+          </TouchableOpacity>
+        </View>
+        <WebView
+          ref={WEBVIEW_REF}
+          style={{ flex: 1 }}
+          onNavigationStateChange=
+          {this.onNavigationStateChange.bind(this)}
+          source={{ uri: 'https://adventistgiving.org/#/org/ANPPS6/envelope/start' }}
+        />
+      </View>
     );
   }
 
@@ -72,15 +85,36 @@ export default class HomeScreen extends React.Component {
       'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
     );
   };
+
+  onBack() {
+    this.refs[WEBVIEW_REF].goBack();
+  }
+
+  onNavigationStateChange(navState) {
+    this.setState({
+      canGoBack: navState.canGoBack
+    });
+  }
 }
 function changeScreenOrientation() {
   Expo.ScreenOrientation.allowAsync(Expo.ScreenOrientation.Orientation.LANDSCAPE);
 }
 const styles = StyleSheet.create({
+  topbar: {
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  topbarText: {
+    color: 'black'
+  },
+  topbarTextDisabled: {
+    color: 'white'
+  },
   container: {
-    paddingTop: 50,
+    //paddingTop: 15, // Padding to push below the navigation bar
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
   },
   developmentModeText: {
     marginBottom: 20,

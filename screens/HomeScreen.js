@@ -1,3 +1,4 @@
+const WEBVIEW_REF = 'WEBVIEW_REF';
 import React from 'react';
 import {
   Image,
@@ -14,33 +15,43 @@ import { MonoText } from '../components/StyledText';
 //import PDFReader from 'rn-pdf-reader-js ';
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-		title: 'Vallejo Drive Seventh Day Adventist Church',
-		tabBarLabel: 'Home',
-		headerTitleStyle: {
-			textAlign: 'center',
-			alignSelf: 'center'
-    }
-    
-	});
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Vallejo Drive Seventh Day Adventist Church',
+      tabBarLabel: 'Home',
+      headerTitleStyle: {
+        textAlign: 'center',
+        alignSelf: 'center'
+      }
+    };
+  };
 
   state = {
-    data: []
+    data: [],
+    canGoBack: false
   }
-  
- 
 
   render() {
     return (
-      
- <WebView
- 
- source={{uri:'https://www.graceunconditional.com/'}}
- 
-
-/>
-   
+      <View style={styles.container}>
+        <View style={styles.topbar}>
+          <TouchableOpacity
+            disabled={!this.state.canGoBack}
+            onPress={this.onBack.bind(this)}
+          >
+            <Text style={(this.state.canGoBack ? styles.topbarText : styles.topbarTextDisabled)}>Go back</Text>
+          </TouchableOpacity>
+        </View>
+        <WebView
+          ref={WEBVIEW_REF}
+          style={{ flex: 1 }}
+          onNavigationStateChange=
+          {this.onNavigationStateChange.bind(this)}
+          source={{ uri: 'https://www.graceunconditional.com/' }}
+        />
+      </View>
     );
+
   }
 
   _maybeRenderDevelopmentModeWarning() {
@@ -48,20 +59,20 @@ export default class HomeScreen extends React.Component {
       const learnMoreButton = (
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
           Learn more
-        </Text>
+    </Text>
       );
 
       return (
         <Text style={styles.developmentModeText}>
           Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
+      tools. {learnMoreButton}
         </Text>
       );
     } else {
       return (
         <Text style={styles.developmentModeText}>
           You are not in development mode, your app will run at full speed.
-        </Text>
+    </Text>
       );
     }
   }
@@ -75,15 +86,36 @@ export default class HomeScreen extends React.Component {
       'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
     );
   };
+
+  onBack() {
+    this.refs[WEBVIEW_REF].goBack();
+  }
+
+  onNavigationStateChange(navState) {
+    this.setState({
+      canGoBack: navState.canGoBack
+    });
+  }
 }
 function changeScreenOrientation() {
   Expo.ScreenOrientation.allowAsync(Expo.ScreenOrientation.Orientation.LANDSCAPE);
 }
 const styles = StyleSheet.create({
+  topbar: {
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  topbarText: {
+    color: 'white'
+  },
+  topbarTextDisabled: {
+    color: '#607d8f'
+  },
   container: {
-    paddingTop: 50,
+    //paddingTop: 15, // Padding to push below the navigation bar
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#607d8f',
   },
   developmentModeText: {
     marginBottom: 20,

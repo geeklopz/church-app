@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: 'white',
-    borderRadius: '10px',
+    borderRadius: 10,
     shadowOpacity: .3,
     margin: 8,
     shadowRadius: 4,
