@@ -30,7 +30,7 @@ HomeStack.navigationOptions = {
 };
 
 const CalendarStack = createStackNavigator({
-  Links: CalendarScreen,
+  Bulletin: CalendarScreen,
 });
 
 CalendarStack.navigationOptions = {
@@ -44,7 +44,7 @@ CalendarStack.navigationOptions = {
 };
 
 const LiveStreamStack = createStackNavigator({
-  Links: LiveStreamScreen,
+  LiveStream: LiveStreamScreen,
 });
 
 LiveStreamStack.navigationOptions = {
@@ -58,7 +58,7 @@ LiveStreamStack.navigationOptions = {
 };
 
 const GiveStack = createStackNavigator({
-  Links: GiveScreen,
+  Give: GiveScreen,
 });
 
 GiveStack.navigationOptions = {

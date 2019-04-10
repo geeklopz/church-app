@@ -28,27 +28,85 @@ export default class HomeScreen extends React.Component {
 
   state = {
     data: [],
-    canGoBack: false
+    canGoBack: false,
+    url: ''
   }
 
   render() {
     return (
+
       <View style={styles.container}>
-        <View style={styles.topbar}>
-          <TouchableOpacity
-            disabled={!this.state.canGoBack}
-            onPress={this.onBack.bind(this)}
-          >
-            <Text style={(this.state.canGoBack ? styles.topbarText : styles.topbarTextDisabled)}>Go back</Text>
-          </TouchableOpacity>
-        </View>
+        <ScrollView>
+          <View style={styles.topbar}>
+            <TouchableOpacity
+              disabled={!this.state.canGoBack}
+              onPress={this.onBack.bind(this)}
+            >
+              <Text style={(this.state.canGoBack ? styles.topbarText : styles.topbarTextDisabled)}>Go back</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.body}>
+            <View>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Bulletin')}
+              >
+                <Image
+                  style={{ width: 249, height: 110 }}
+                  source={require('../assets/images/h1-1.jpg')}
+                />
+              </TouchableOpacity>
+            </View>
+            <View>
+              <TouchableOpacity
+                onPress={() => this.setState({ url: 'https://www.graceunconditional.com/video-archive/' })}
+              >
+                <Image
+                  style={{ width: 249, height: 110 }}
+                  source={require('../assets/images/h2.jpg')}
+                />
+              </TouchableOpacity>
+            </View>
+            <View>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Give')}
+              >
+                <Image
+                  style={{ width: 249, height: 110 }}
+                  source={require('../assets/images/h3.jpg')}
+                />
+              </TouchableOpacity>
+            </View>
+            <View>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('AboutUs')}
+              >
+                <Image
+                  style={{ width: 249, height: 110 }}
+                  source={require('../assets/images/h5.jpg')}
+                />
+              </TouchableOpacity>
+            </View>
+            <View>
+              <TouchableOpacity
+                onPress={() => this.setState({ url: 'https://www.graceunconditional.com/contact-us/' })}
+              >
+                <Image
+                  style={{ width: 249, height: 110 }}
+                  source={require('../assets/images/h4.jpg')}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
         <WebView
           ref={WEBVIEW_REF}
           style={{ flex: 1 }}
           onNavigationStateChange=
           {this.onNavigationStateChange.bind(this)}
-          source={{ uri: 'https://www.graceunconditional.com/' }}
+          source={{ uri: this.state.url }}
         />
+
       </View>
     );
 
@@ -110,12 +168,17 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   topbarTextDisabled: {
-    color: '#607d8f'
+    color: '#47676d'
   },
   container: {
     //paddingTop: 15, // Padding to push below the navigation bar
     flex: 1,
-    backgroundColor: '#607d8f',
+    backgroundColor: '#47676d',
+  },
+  body: {
+    flex: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   developmentModeText: {
     marginBottom: 20,
