@@ -26,7 +26,7 @@ export default class LiveStreamScreen extends React.Component {
   render() {
     return (
  <WebView
- source={{uri:'https://player.twitch.tv/?channel=rush'}}
+ source={{uri:'https://www.ustream.tv/embed/1924808?html5ui'}}
  
 />
    

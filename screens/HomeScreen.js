@@ -99,13 +99,7 @@ export default class HomeScreen extends React.Component {
             </View>
           </View>
         </ScrollView>
-        <WebView
-          ref={WEBVIEW_REF}
-          style={{ flex: 1 }}
-          onNavigationStateChange=
-          {this.onNavigationStateChange.bind(this)}
-          source={{ uri: this.state.url }}
-        />
+        
 
       </View>
     );
